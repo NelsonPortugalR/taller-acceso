@@ -190,6 +190,7 @@
         }
         
         .section-title {
+            text-align: center;
             font-size: 2rem;
             margin: 2rem 0 1rem;
             position: relative;
@@ -425,11 +426,40 @@
                     <div class="resource-item">
                         <div class="resource-icon">🔖</div>
                         <div class="resource-title">Prompt para potenciar tu Expertise</div>
-                        <div class="resource-download">
-                            <a href="https://docs.google.com/document/d/1525njxNBYx0SKZ05dpaqIM3CBAmS3uZRgse9Kp7dRqE/edit?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none;">
-                                <span>Descargar</span>
-                                <span>↓</span>
-                            </a>
+                        <div class="resource-download" onclick="togglePrompt()">
+                            <span id="prompt-toggle">Ver Prompt</span>
+                            <span>▼</span>
+                        </div>
+                    </div>
+                    <div id="prompt-content" style="display: none; margin-left: 2.5rem; padding: 1rem; background-color: #f1f5f9; border-radius: 6px;">
+                        <h4 style="margin-bottom: 1rem;">Prompt para el profesional:</h4>
+                        <p style="margin-bottom: 1rem; white-space: pre-line; font-family: monospace; background-color: #f8fafc; padding: 1rem; border-radius: 4px; border-left: 3px solid var(--primary);">"Soy **[escribe aquí tu profesión]** y mis actividades técnicas incluyen **[tu tarea técnica específica, mientras más detallada mejor]**. 
+                    Quiero utilizar ChatGPT para mejorar mi eficiencia y desempeño en estas áreas. Por favor, sugiéreme tres maneras específicas en las que puedo aprovechar ChatGPT para lograrlo. Para cada idea, proporciona:
+                    * Un **prompt específico** que pueda usar, indicando entre corchetes los datos que debo ingresar.
+                    * Una **descripción detallada** de cómo utilizar esa recomendación en mi trabajo diario.
+                    * El **tipo de resultado** que me proporcionará ChatGPT.
+                    Cómo puedo **aplicar ese resultado** para mejorar mis tareas técnicas."</p>
+                        
+                        <h4 style="margin-top: 1.5rem; margin-bottom: 1rem;">Ejemplos de referencia:</h4>
+                        
+                        <div style="margin-bottom: 1rem;">
+                            <h5 style="margin-bottom: 0.5rem;">Ejemplo aplicado 1:</h5>
+                            <p style="margin-bottom: 1rem;">Si eres un agrónomo dedicado al diagnóstico de enfermedades en cultivos, podrías ingresar:</p>
+                            <p style="white-space: pre-line; font-family: monospace; background-color: #f8fafc; padding: 1rem; border-radius: 4px; border-left: 3px solid var(--success);">"Soy **agrónomo** y mis actividades técnicas incluyen el **diagnóstico de enfermedades en cultivos**. Por favor, sugiéreme tres maneras específicas en las que puedo utilizar ChatGPT para mejorar o facilitar estas tareas técnicas. Para cada idea, proporciona:
+                    * Un **prompt específico** que pueda usar, indicando entre corchetes los datos que debo ingresar.
+                    * Una **descripción de cómo hacer uso** de esa recomendación.
+                    * El **tipo de resultado** que proporcionará ChatGPT.
+                    * Cómo puedo **utilizar ese output** en mi trabajo."</p>
+                        </div>
+                        
+                        <div>
+                            <h5 style="margin-bottom: 0.5rem;">Ejemplo aplicado 2:</h5>
+                            <p style="margin-bottom: 1rem;">Si eres un analista de datos, podrías ingresar:</p>
+                            <p style="white-space: pre-line; font-family: monospace; background-color: #f8fafc; padding: 1rem; border-radius: 4px; border-left: 3px solid var(--success);">Soy **analista de datos** y mis actividades técnicas incluyen el **análisis de vibraciones y aceites para mantenimiento predictivo**. Quiero utilizar ChatGPT para mejorar mi eficiencia y desempeño en estas áreas. Por favor, sugiéreme tres maneras específicas en las que puedo aprovechar ChatGPT para lograrlo. Para cada idea, proporciona:
+                    * Un **prompt específico** que pueda usar, indicando entre corchetes los datos que debo ingresar.
+                    * Una **descripción detallada** de cómo utilizar esa recomendación en mi trabajo diario.
+                    * El **tipo de resultado** que me proporcionará ChatGPT.
+                    * Cómo puedo **aplicar ese resultado** para mejorar mis tareas técnicas."</p>
                         </div>
                     </div>
                     
@@ -543,7 +573,20 @@
                 modelListToggle.textContent = 'Ver Lista';
             }
         }
-        
+
+        // Función para mostrar/ocultar el prompt
+        function togglePrompt() {
+            const promptContent = document.getElementById('prompt-content');
+            const promptToggle = document.getElementById('prompt-toggle');
+            
+            if (promptContent.style.display === 'none') {
+                promptContent.style.display = 'block';
+                promptToggle.textContent = 'Ocultar Prompt';
+            } else {
+                promptContent.style.display = 'none';
+                promptToggle.textContent = 'Ver Prompt';
+            }
+        }
         // Inicializar la transcripción
         document.addEventListener('DOMContentLoaded', function() {
             const transcriptionToggle = document.getElementById('transcription-toggle');
