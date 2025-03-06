@@ -495,11 +495,75 @@
                     <div class="resource-item">
                         <div class="resource-icon">💡</div>
                         <div class="resource-title">Prompt para generar ideas prácticas para tu gestión</div>
-                        <div class="resource-download">
-                            <a href="https://docs.google.com/document/d/1FYqzKKjXIaZbMfFc4Qyxl6LKIIy2qRy2Jh2_gbHaObA/edit?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none;">
-                                <span>Descargar</span>
-                                <span>↓</span>
-                            </a>
+                        <div class="resource-download" onclick="togglePromptGenerator()">
+                            <span id="prompt-generator-toggle">Ver generador de prompt</span>
+                            <span>▼</span>
+                        </div>
+                    </div>
+                    <div id="prompt-generator-content" style="display: none; margin-left: 2.5rem; padding: 1rem; background-color: #f1f5f9; border-radius: 6px;">
+                        <div style="max-width: 800px;">
+                            <h4 style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--dark);">Generador de Prompts para IA</h4>
+                            
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; color: var(--dark); font-weight: 600; margin-bottom: 0.5rem;">
+                                    Selecciona una capacidad:
+                                </label>
+                                <select 
+                                    id="capability-select"
+                                    style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 6px; background-color: white; color: var(--dark);"
+                                >
+                                    <option value="">-- Selecciona una capacidad --</option>
+                                    <!-- Las opciones se cargarán con JavaScript -->
+                                </select>
+                            </div>
+
+                            <div id="question-container" style="margin-bottom: 1.5rem; display: none;">
+                                <label id="question-label" style="display: block; color: var(--dark); font-weight: 600; margin-bottom: 0.5rem;">
+                                    <!-- Pregunta aquí -->
+                                </label>
+                                <div id="answer-example" style="margin-bottom: 0.5rem; color: var(--gray); font-style: italic; font-size: 0.875rem;">
+                                    <!-- Ejemplo de respuesta aquí -->
+                                </div>
+                                <textarea
+                                    id="custom-input"
+                                    style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 6px; background-color: white; resize: vertical; min-height: 100px;"
+                                    placeholder="Ingresa tu respuesta aquí..."
+                                ></textarea>
+                            </div>
+
+                            <div id="generate-button-container" style="margin-bottom: 1rem; display: none;">
+                                <button
+                                    id="generate-button"
+                                    class="btn btn-primary"
+                                    style="width: 100%;"
+                                >
+                                    Generar Prompt
+                                </button>
+                            </div>
+
+                            <div id="result-container" style="display: none;">
+                                <div style="padding: 1rem; border: 1px solid #e2e8f0; border-radius: 6px; background-color: var(--light);">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                        <h5 style="font-size: 1rem; font-weight: 600; color: var(--dark);">Prompt Generado:</h5>
+                                        <button
+                                            id="copy-button"
+                                            style="background-color: var(--gray); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.875rem; cursor: pointer;"
+                                        >
+                                            Copiar
+                                        </button>
+                                    </div>
+                                    <div id="generated-prompt" style="padding: 0.75rem; background-color: white; border: 1px solid #e2e8f0; border-radius: 4px; white-space: pre-wrap; font-family: monospace;">
+                                        <!-- Prompt generado aquí -->
+                                    </div>
+                                </div>
+                                
+                                <div style="margin-top: 1rem; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 6px; background-color: var(--light);">
+                                    <h5 style="font-size: 1rem; font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">Ejemplo de prompt:</h5>
+                                    <div id="example-prompt" style="padding: 0.75rem; background-color: white; border: 1px solid #e2e8f0; border-radius: 4px; white-space: pre-wrap; font-family: monospace;">
+                                        <!-- Ejemplo aquí -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -562,7 +626,7 @@
         </div>
         
         <div class="copyright">
-            <p>&copy; 2025 Taller de Inteligencia Artificial Aplicada. Todos los derechos reservados.</p>
+            <p>© 2025 Taller de Inteligencia Artificial Aplicada. Todos los derechos reservados.</p>
         </div>
     </footer>
     
@@ -594,16 +658,15 @@
                 promptToggle.textContent = 'Ver Prompt';
             }
         }
+
         // Función para copiar el prompt al portapapeles
         function copyPrompt() {
             const promptText = document.getElementById('copy-text').innerText;
             navigator.clipboard.writeText(promptText).then(function() {
-                // Cambiar el texto del botón temporalmente para dar feedback
                 const copyButton = document.getElementById('copy-button');
                 copyButton.textContent = '¡Copiado!';
                 copyButton.style.backgroundColor = 'var(--success)';
                 
-                // Volver al estado original después de 2 segundos
                 setTimeout(function() {
                     copyButton.textContent = 'Copiar';
                     copyButton.style.backgroundColor = 'var(--primary)';
@@ -629,6 +692,306 @@
                 }
             });
         });
+
+        // Función para mostrar/ocultar el generador de prompts
+        function togglePromptGenerator() {
+            const promptGeneratorContent = document.getElementById('prompt-generator-content');
+            const promptGeneratorToggle = document.getElementById('prompt-generator-toggle');
+            
+            if (promptGeneratorContent.style.display === 'none') {
+                promptGeneratorContent.style.display = 'block';
+                promptGeneratorToggle.textContent = 'Ocultar generador de prompt';
+            } else {
+                promptGeneratorContent.style.display = 'none';
+                promptGeneratorToggle.textContent = 'Ver generador de prompt';
+            }
+        }
+
+        // Los datos de capacidades
+        const capabilities = [
+            {
+                id: 1,
+                name: "APRENDIZAJE",
+                question: "A nivel profesional y/o empresarial, ¿cuál es uno o dos temas sobre los cuáles te gustaría aprender más?",
+                answerExample: "Marketing digital para pequeñas empresas",
+                example: "Guíame, paso a paso sobre cómo crear un blog de marketing digital, asume que soy principiante, verifica que he aprendido antes de darme el siguiente paso, conforme voy confirmando mi avance puedes avanzar un poco más rápido"
+            },
+            {
+                id: 2,
+                name: "HACER IMÁGENES",
+                question: "¿Qué imagenes te gustaría crear?",
+                answerExample: "Un paisaje de montañas con un lago al atardecer",
+                example: "Crea una imagen que represente el concepto de trabajo en equipo en una startup moderna. Incluye personas diversas colaborando en un espacio de trabajo abierto con tecnología avanzada. Utiliza un estilo de ilustración digital vibrante. La imagen debe transmitir energía, innovación y colaboración."
+            },
+            {
+                id: 3,
+                name: "SOLUCIÓN TÉCNICA",
+                question: "¿Cuál es un problema técnico que te gustaría resolver, ya sea en tu celular, computadora y/o algún software/herramienta específica?",
+                answerExample: "Mi computadora está lenta y tarda mucho en iniciar aplicaciones",
+                example: "Tengo un problema con mi impresora, el dispositivo que uso es una HP OfficeJet Pro 9015 y no puedo imprimir documentos a doble cara, ayúdame a resolverlo, no te saltes pasos y explícame detalladamente"
+            },
+            {
+                id: 4,
+                name: "GENERAR PROMPT",
+                question: "¿Sobre qué tema o tarea específica has estado tratando de obtener información más precisa o detallada recientemente?",
+                answerExample: "Análisis de datos para toma de decisiones empresariales",
+                example: "Genera un prompt efectivo para obtener un análisis detallado de las tendencias de mercado en el sector de energías renovables. El prompt debe ser detallado, claro y diseñado para obtener la mejor respuesta posible de un modelo de IA. Incluye solicitudes de datos estadísticos, ejemplos de empresas líderes y proyecciones futuras. Considera factores como las políticas gubernamentales, avances tecnológicos y cambios en la demanda del consumidor."
+            },
+            {
+                id: 5,
+                name: "HACER CONTENIDO DE PRESENTACIÓN",
+                question: "¿Qué presentación debes elaborar, realizar y/o mejorar en los próximos días?",
+                answerExample: "Presentación sobre los resultados financieros del último trimestre para la junta directiva",
+                example: "Haz la estructura y el contenido de una presentación sobre estrategias de marketing en redes sociales. La audiencia es un grupo de pequeños empresarios locales. Los puntos clave que quiero cubrir son: importancia de las redes sociales para negocios locales, estrategias efectivas para cada plataforma principal (Facebook, Instagram, Twitter), y cómo medir el retorno de inversión. Por favor, ayúdame a estructurar la presentación, sugiriendo títulos para cada diapositiva y el contenido principal que debería incluir. Asegúrate de que la presentación sea atractiva y fácil de seguir."
+            },
+            {
+                id: 6,
+                name: "ORGANIZAR TAREAS",
+                question: "¿Qué es lo que más te estresa de tu lista de pendientes en este momento?",
+                answerExample: "Tengo que completar 3 informes, preparar una presentación y coordinar un evento en la próxima semana",
+                example: "Tengo las siguientes tareas para completar: terminar el informe de ventas mensual, preparar la presentación para el cliente potencial, actualizar el sitio web de la empresa, y coordinar el evento de team building. Ayúdame a organizarlas en un plan de acción, considerando que tengo una semana para completarlas, limitaciones de tiempo debido a reuniones diarias, y que necesito la ayuda de mi equipo para algunas tareas. Proporciona un cronograma sugerido para la semana y consejos para manejar posibles obstáculos como conflictos de horarios o retrasos inesperados."
+            },
+            {
+                id: 7,
+                name: "SITUACIONES INTERPERSONALES",
+                question: "¿Qué aspecto en relación a la comunicación, desempeño y/o relacionamiento de tu equipo te gustaría mejorar?",
+                answerExample: "La comunicación entre los departamentos de ventas y marketing",
+                example: "Estoy enfrentando una situación en mi equipo donde hay falta de comunicación y colaboración entre los departamentos de ventas y marketing. Mi objetivo es mejorar la coordinación y alineación de objetivos entre estos dos equipos. ¿Puedes proporcionarme estrategias paso a paso para abordar este problema, incluyendo ejemplos de cómo comunicarme efectivamente y posibles ejercicios o actividades para mejorar la dinámica del equipo?"
+            },
+            {
+                id: 8,
+                name: "ANALIZAR DOCUMENTOS / RESUMIR",
+                question: "¿Qué documento, manual o término técnico te gustaría entender mejor?",
+                answerExample: "El Reglamento General de Protección de Datos (RGPD)",
+                example: "Necesito entender mejor el Reglamento General de Protección de Datos (RGPD). Por favor, proporciona un resumen detallado que incluya: los puntos principales, cualquier término técnico importante con sus definiciones, y cómo se aplica esto en un contexto práctico. Si es posible, incluye un ejemplo o caso de estudio para ilustrar los conceptos clave."
+            },
+            {
+                id: 9,
+                name: "CREAR/MEJORAR DOCUMENTOS",
+                question: "¿Qué tipos de documentos o informes redactas con frecuencia en tu trabajo?",
+                answerExample: "Informes de progreso de proyectos semanales",
+                example: "Regularmente redacto informes de progreso de proyectos en mi trabajo. Necesito mejorar su estructura y contenido. ¿Puedes proporcionarme una plantilla detallada para este tipo de documento, incluyendo secciones sugeridas, qué información debería incluir en cada una, y consejos para hacer el documento más efectivo y fácil de leer? También, por favor, dame algunos ejemplos de frases o párrafos que podría usar en diferentes partes del documento."
+            },
+            {
+                id: 10,
+                name: "ARGUMENTAR Y CONTRAARGUMENTAR",
+                question: "¿De qué se tratará la próxima reunión que tendrás en los próximos días?, ¿qué te gustaría comunicar?",
+                answerExample: "Reunión sobre la implementación de un nuevo sistema CRM, quiero comunicar la necesidad de invertir en esta herramienta",
+                example: "Tengo una reunión próxima sobre la implementación de un nuevo sistema de gestión de relaciones con clientes (CRM). Quiero comunicar la necesidad de invertir en esta herramienta para mejorar nuestras ventas y servicio al cliente. ¿Puedes ayudarme a preparar argumentos sólidos para respaldar mi posición? Además, anticipa posibles contraargumentos que puedan surgir y cómo podría responder a ellos de manera efectiva. Por favor, incluye datos o ejemplos que puedan fortalecer mi argumentación."
+            },
+            {
+                id: 11,
+                name: "REDACCIÓN DE TEXTOS",
+                question: "¿Qué mensaje, correo, publicación o contenido debes elaborar y/o enviar en esta semana?",
+                answerExample: "Un correo electrónico sobre una propuesta de colaboración para un proyecto de sostenibilidad",
+                example: "Necesito escribir un correo electrónico sobre una propuesta de colaboración para un proyecto de sostenibilidad. El objetivo es conseguir una reunión con el director de responsabilidad social corporativa de una importante empresa de tecnología. La audiencia es profesionales de alto nivel con poco tiempo libre. ¿Puedes ayudarme a redactar este texto, asegurándote de que sea claro, persuasivo y apropiado para la audiencia? Por favor, incluye una estructura sugerida y frases clave que debería utilizar."
+            },
+            {
+                id: 12,
+                name: "TRADUCCIÓN",
+                question: "¿Hay algún documento, guía, página o archivo en otro idioma que te gustaría entender y/o resumir?",
+                answerExample: "Un informe técnico en inglés sobre inteligencia artificial aplicada a la atención al cliente",
+                example: "Tengo un informe técnico en inglés que necesito entender. El tema es sobre avances recientes en inteligencia artificial aplicada a la atención al cliente. ¿Puedes proporcionarme un resumen detallado en español, destacando los puntos principales y cualquier término técnico importante? Si hay alguna parte que parezca particularmente importante o compleja, por favor proporciona una traducción más literal de esa sección."
+            },
+            {
+                id: 13,
+                name: "ANÁLISIS DE PÁGINA WEB",
+                question: "¿De qué competidor, proveedor, organización o institución te gustaría analizar su página web?",
+                answerExample: "Netflix",
+                example: "Me gustaría analizar la página web de Netflix. Por favor, realiza un análisis detallado que incluya: estructura del sitio, diseño visual, contenido principal, llamadas a la acción, estrategia de SEO aparente, y cualquier característica única o innovadora. Además, compara brevemente con los estándares de la industria del streaming y sugiere áreas de mejora potencial."
+            },
+            {
+                id: 14,
+                name: "LEYES",
+                question: "¿Qué documento legal debes analizar, qué situación legal debes atender y/o sobre qué ley te gustaría tener un mayor entendimiento?",
+                answerExample: "La Ley de Protección al Consumidor en México",
+                example: "Necesito entender mejor la Ley de Protección al Consumidor en México. Por favor, proporciona un resumen en lenguaje sencillo que incluya: los puntos principales de la ley, cómo se aplica en situaciones prácticas, y cualquier caso legal relevante que ayude a ilustrar su interpretación. Si hay términos legales complejos, por favor defínelos. También, ¿podrías sugerir algunos recursos confiables para obtener más información?"
+            },
+            {
+                id: 15,
+                name: "GENERAR IDEAS",
+                question: "¿Qué problema aún no sabes cómo resolver?",
+                answerExample: "Alta rotación de personal en nuestra empresa de desarrollo de software",
+                example: "Estoy tratando de resolver el siguiente problema: alta rotación de personal en nuestra empresa de desarrollo de software. Necesito ideas creativas y prácticas. Por favor, genera una lista de al menos 10 posibles soluciones, incluyendo tanto enfoques convencionales como no convencionales. Para cada idea, proporciona una breve explicación de cómo podría implementarse y sus posibles pros y contras."
+            },
+            {
+                id: 16,
+                name: "HACER GRÁFICAS / COMPARATIVOS",
+                question: "¿Qué información, documentos o datos sueles analizar en tu día a día?",
+                answerExample: "Datos de ventas trimestrales de los últimos 3 años para nuestros 5 productos principales",
+                example: "Necesito crear una gráfica comparativa basada en los siguientes datos de ventas trimestrales de los últimos 3 años para nuestros 5 productos principales. El objetivo es mostrar claramente las tendencias de ventas y identificar patrones estacionales. ¿Puedes sugerir el mejor tipo de gráfica para representar esta información y explicar por qué? Además, proporciona una descripción detallada de cómo debería estructurarse la gráfica, incluyendo títulos, etiquetas de ejes, leyendas, y cualquier otro elemento relevante."
+            },
+            {
+                id: 17,
+                name: "VER IMÁGENES",
+                question: "¿Has recibido recientemente algún error visual o captura de pantalla que no entiendes completamente?",
+                answerExample: "Captura de pantalla de un mensaje de error en mi aplicación de correo electrónico",
+                example: "Analiza esta captura de pantalla de un mensaje de error en mi aplicación de correo electrónico. Describe detalladamente lo que ves, incluyendo el texto del error, cualquier código visible y el contexto de la aplicación. ¿Qué crees que podría estar causando este error y qué pasos sugieres para resolverlo?"
+            },
+            {
+                id: 18,
+                name: "INVESTIGAR",
+                question: "¿Qué es algo que siempre has querido saber pero no has tenido tiempo para averiguar?",
+                answerExample: "La historia y evolución de la inteligencia artificial",
+                example: "Siempre he querido saber más sobre la historia y evolución de la inteligencia artificial. Por favor, realiza una investigación completa y proporciona un informe detallado que incluya: antecedentes históricos, conceptos clave, desarrollos recientes, aplicaciones prácticas, y perspectivas futuras. Asegúrate de incluir datos interesantes y curiosidades que puedan no ser ampliamente conocidas. También, sugiere recursos adicionales para seguir aprendiendo sobre este tema."
+            },
+            {
+                id: 19,
+                name: "CONVERTIR ARCHIVOS",
+                question: "¿Tienes algún archivo que deseas convertir a otro, presenta algún error o dejas modificar?",
+                answerExample: "Un PDF de un manual de políticas y procedimientos que necesito convertir a Word",
+                example: "Convierte este archivo PDF a formato Word. El contenido es un manual de políticas y procedimientos de recursos humanos. Muéstrame el resultado convertido."
+            },
+            {
+                id: 20,
+                name: "CREACIÓN / PROGRAMACIÓN",
+                question: "¿Hay algún tipo de programa básico que te gustaría crear?",
+                answerExample: "Un programa que genere cotizaciones para una empresa de servicios de limpieza",
+                example: "Crea un programa que genere cotizaciones para una empresa de servicios de limpieza. El programa debe permitir al usuario ingresar el tipo de servicio (limpieza residencial, comercial o industrial), el tamaño del espacio en metros cuadrados, y servicios adicionales opcionales (como limpieza de ventanas o alfombras). Debe calcular el precio basado en estas variables y generar una cotización formal en formato PDF."
+            }
+        ];
+
+        // Elementos del DOM para el generador de prompts
+        const capabilitySelect = document.getElementById('capability-select');
+        const questionContainer = document.getElementById('question-container');
+        const questionLabel = document.getElementById('question-label');
+        const answerExample = document.getElementById('answer-example');
+        const customInput = document.getElementById('custom-input');
+        const generateButtonContainer = document.getElementById('generate-button-container');
+        const generateButton = document.getElementById('generate-button');
+        const resultContainer = document.getElementById('result-container');
+        const generatedPromptElement = document.getElementById('generated-prompt');
+        const examplePromptElement = document.getElementById('example-prompt');
+        const copyButton = document.getElementById('copy-button');
+
+        // Cargar las opciones de capacidades
+        capabilities.forEach(cap => {
+            const option = document.createElement('option');
+            option.value = cap.id;
+            option.textContent = cap.name;
+            capabilitySelect.appendChild(option);
+        });
+
+        // Event listeners para el generador de prompts
+        capabilitySelect.addEventListener('change', handleCapabilityChange);
+        generateButton.addEventListener('click', generatePrompt);
+        copyButton.addEventListener('click', copyToClipboard);
+
+        function handleCapabilityChange() {
+            const selectedCapabilityId = capabilitySelect.value;
+            
+            if (selectedCapabilityId) {
+                const capability = capabilities.find(cap => cap.id.toString() === selectedCapabilityId);
+                
+                questionLabel.textContent = capability.question;
+                answerExample.textContent = `Ejemplo de respuesta: "${capability.answerExample}"`;
+                
+                questionContainer.style.display = 'block';
+                generateButtonContainer.style.display = 'block';
+                resultContainer.style.display = 'none';
+                customInput.value = '';
+            } else {
+                questionContainer.style.display = 'none';
+                generateButtonContainer.style.display = 'none';
+                resultContainer.style.display = 'none';
+            }
+        }
+
+        function generatePrompt() {
+            const selectedCapabilityId = parseInt(capabilitySelect.value);
+            const input = customInput.value.trim();
+            
+            if (!selectedCapabilityId || !input) {
+                alert('Por favor selecciona una capacidad y proporciona la información necesaria.');
+                return;
+            }
+
+            let finalPrompt = '';
+            
+            switch (selectedCapabilityId) {
+                case 1: // APRENDIZAJE
+                    finalPrompt = `Guíame, paso a paso sobre ${input} asume que soy principiante, verifica que he aprendido antes de darme el siguiente paso, conforme voy confirmando mi avance puedes avanzar un poco más rápido`;
+                    break;
+                case 2: // HACER IMÁGENES
+                    finalPrompt = `Crea una imagen que represente ${input}.`;
+                    break;
+                case 3: // SOLUCIÓN TÉCNICA
+                    finalPrompt = `Tengo un problema con ${input}, ayúdame a resolverlo, no te saltes pasos y explícame detalladamente`;
+                    break;
+                case 4: // GENERAR PROMPT
+                    finalPrompt = `Genera un prompt efectivo para ${input}. El prompt debe ser detallado, claro y diseñado para obtener la mejor respuesta posible de un modelo de IA.`;
+                    break;
+                case 5: // HACER CONTENIDO DE PRESENTACIÓN
+                    finalPrompt = `Haz la estructura de una presentación sobre ${input}. Por favor, ayúdame a estructurar la presentación, sugiriendo títulos para cada diapositiva y el contenido principal que debería incluir. Asegúrate de que la presentación sea atractiva y fácil de seguir.`;
+                    break;
+                case 6: // ORGANIZAR TAREAS
+                    finalPrompt = `Tengo las siguientes tareas para completar: ${input}. Ayúdame a organizarlas en un plan de acción. Proporciona un cronograma sugerido y consejos para manejar posibles obstáculos.`;
+                    break;
+                case 7: // SITUACIONES INTERPERSONALES
+                    finalPrompt = `Estoy enfrentando una situación en mi equipo donde hay problemas con ${input}. Mi objetivo es mejorar este aspecto. ¿Puedes proporcionarme estrategias paso a paso para abordar este problema, incluyendo ejemplos de cómo comunicarme efectivamente y posibles ejercicios o actividades para mejorar la dinámica del equipo?`;
+                    break;
+                case 8: // ANALIZAR DOCUMENTOS / RESUMIR
+                    finalPrompt = `Necesito entender mejor ${input}. Por favor, proporciona un resumen detallado que incluya: los puntos principales, cualquier término técnico importante con sus definiciones, y cómo se aplica esto en un contexto práctico. Si es posible, incluye un ejemplo o caso de estudio para ilustrar los conceptos clave.`;
+                    break;
+                case 9: // CREAR/MEJORAR DOCUMENTOS
+                    finalPrompt = `Regularmente redacto ${input} en mi trabajo. Necesito mejorar su estructura y contenido. ¿Puedes proporcionarme una plantilla detallada para este tipo de documento, incluyendo secciones sugeridas, qué información debería incluir en cada una, y consejos para hacer el documento más efectivo y fácil de leer? También, por favor, dame algunos ejemplos de frases o párrafos que podría usar en diferentes partes del documento.`;
+                    break;
+                case 10: // ARGUMENTAR Y CONTRAARGUMENTAR
+                    finalPrompt = `Tengo una reunión próxima sobre ${input}. ¿Puedes ayudarme a preparar argumentos sólidos para respaldar mi posición? Además, anticipa posibles contraargumentos que puedan surgir y cómo podría responder a ellos de manera efectiva. Por favor, incluye datos o ejemplos que puedan fortalecer mi argumentación.`;
+                    break;
+                case 11: // REDACCIÓN DE TEXTOS
+                    finalPrompt = `Necesito escribir un texto sobre ${input}. ¿Puedes ayudarme a redactar este texto, asegurándote de que sea claro, persuasivo y apropiado para la audiencia? Por favor, incluye una estructura sugerida y frases clave que debería utilizar.`;
+                    break;
+                case 12: // TRADUCCIÓN
+                    finalPrompt = `Tengo un documento en otro idioma sobre ${input}. ¿Puedes proporcionarme un resumen detallado en español, destacando los puntos principales y cualquier término técnico importante? Si hay alguna parte que parezca particularmente importante o compleja, por favor proporciona una traducción más literal de esa sección.`;
+                    break;
+                case 13: // ANÁLISIS DE PÁGINA WEB
+                    finalPrompt = `Me gustaría analizar la página web de ${input}. Por favor, realiza un análisis detallado que incluya: estructura del sitio, diseño visual, contenido principal, llamadas a la acción, estrategia de SEO aparente, y cualquier característica única o innovadora. Además, compara brevemente con los estándares de la industria y sugiere áreas de mejora potencial.`;
+                    break;
+                case 14: // LEYES
+                    finalPrompt = `Necesito entender mejor ${input}. Por favor, proporciona un resumen en lenguaje sencillo que incluya: los puntos principales de la ley, cómo se aplica en situaciones prácticas, y cualquier caso legal relevante que ayude a ilustrar su interpretación. Si hay términos legales complejos, por favor defínelos. También, ¿podrías sugerir algunos recursos confiables para obtener más información?`;
+                    break;
+                case 15: // GENERAR IDEAS
+                    finalPrompt = `Estoy tratando de resolver el siguiente problema: ${input}. Necesito ideas creativas y prácticas. Por favor, genera una lista de al menos 10 posibles soluciones, incluyendo tanto enfoques convencionales como no convencionales. Para cada idea, proporciona una breve explicación de cómo podría implementarse y sus posibles pros y contras.`;
+                    break;
+                case 16: // HACER GRÁFICAS / COMPARATIVOS
+                    finalPrompt = `Necesito crear una gráfica basada en los siguientes datos: ${input}. ¿Puedes sugerir el mejor tipo de gráfica para representar esta información y explicar por qué? Además, proporciona una descripción detallada de cómo debería estructurarse la gráfica, incluyendo títulos, etiquetas de ejes, leyendas, y cualquier otro elemento relevante.`;
+                    break;
+                case 17: // VER IMÁGENES
+                    finalPrompt = `Analiza esta imagen de ${input}. Describe detalladamente lo que ves. ¿Qué crees que podría estar causando el problema y qué pasos sugieres para resolverlo?`;
+                    break;
+                case 18: // INVESTIGAR
+                    finalPrompt = `Siempre he querido saber más sobre ${input}. Por favor, realiza una investigación completa y proporciona un informe detallado que incluya: antecedentes históricos, conceptos clave, desarrollos recientes, aplicaciones prácticas, y perspectivas futuras. Asegúrate de incluir datos interesantes y curiosidades que puedan no ser ampliamente conocidas. También, sugiere recursos adicionales para seguir aprendiendo sobre este tema.`;
+                    break;
+                case 19: // CONVERTIR ARCHIVOS
+                    finalPrompt = `Necesito convertir un archivo que contiene ${input}. Muéstrame cómo podría hacer esta conversión y cuál sería el resultado.`;
+                    break;
+                case 20: // CREACIÓN / PROGRAMACIÓN
+                    finalPrompt = `Crea un programa que ${input}. El programa debe ser fácil de usar y proporcionar resultados precisos.`;
+                    break;
+                default:
+                    finalPrompt = `No se pudo generar un prompt para esta capacidad.`;
+            }
+            
+            const capability = capabilities.find(cap => cap.id === selectedCapabilityId);
+            
+            generatedPromptElement.textContent = finalPrompt;
+            examplePromptElement.textContent = capability.example;
+            resultContainer.style.display = 'block';
+        }
+
+        function copyToClipboard() {
+            const textarea = document.createElement('textarea');
+            textarea.value = generatedPromptElement.textContent;
+            document.body.appendChild(textarea);
+            
+            textarea.select();
+            document.execCommand('copy');
+            
+            document.body.removeChild(textarea);
+            
+            alert('Prompt copiado al portapapeles!');
+        }
     </script>
 </body>
 </html>
