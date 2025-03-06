@@ -564,39 +564,89 @@
                 
                 <h3 style="margin-top: 2rem;">Recursos Adicionales</h3>
                 <div class="resources">
-                    <div class="resource-item">
+                    <div class="resource-item" id="modelos-lenguaje-item">
                         <div class="resource-icon">📝</div>
-                        <div class="resource-title">Presentación de la Clase</div>
-                        <div class="resource-download">
-                            <span>Descargar</span>
-                            <span>↓</span>
+                        <div class="resource-title">Lista de Modelos de Lenguaje</div>
+                        <div class="resource-download" onclick="toggleModelList()">
+                            <span id="model-list-toggle">Ver Lista</span>
+                            <span>▼</span>
                         </div>
+                    </div>
+                    <div id="modelos-list" style="display: none; margin-left: 2.5rem; padding: 1rem; background-color: #f1f5f9; border-radius: 6px;">
+                        <ul style="list-style-type: none; padding: 0;">
+                            <li style="margin-bottom: 0.5rem;"><a href="https://claude.ai/" target="_blank" style="color: var(--primary); text-decoration: none;">Claude</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="https://grok.com/" target="_blank" style="color: var(--primary); text-decoration: none;">Grok</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="https://chatgpt.com" target="_blank" style="color: var(--primary); text-decoration: none;">ChatGPT</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="https://chat.deepseek.com/" target="_blank" style="color: var(--primary); text-decoration: none;">Deepseek</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="https://chat.mistral.ai/chat" target="_blank" style="color: var(--primary); text-decoration: none;">Mistral</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="https://gemini.google.com/app" target="_blank" style="color: var(--primary); text-decoration: none;">Gemini</a></li>
+                            <li><a href="https://meta.ai/" target="_blank" style="color: var(--primary); text-decoration: none;">Meta</a></li>
+                        </ul>
                     </div>
                     
                     <div class="resource-item">
                         <div class="resource-icon">📊</div>
-                        <div class="resource-title">Guía de Modelos de Lenguaje</div>
+                        <div class="resource-title">Fundamentos de la IA</div>
                         <div class="resource-download">
-                            <span>Descargar</span>
-                            <span>↓</span>
+                            <a href="https://drive.google.com/file/d/1MS506BvnPnJVdy76cPbYm9G6ZYRNkG46/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none;">
+                                <span>Descargar</span>
+                                <span>↓</span>
+                            </a>
                         </div>
                     </div>
                     
                     <div class="resource-item">
                         <div class="resource-icon">📄</div>
-                        <div class="resource-title">Ejercicios Prácticos</div>
+                        <div class="resource-title">Guía de Mentalidad</div>
                         <div class="resource-download">
-                            <span>Descargar</span>
-                            <span>↓</span>
+                            <a href="https://drive.google.com/file/d/130-Hebuf6R2rRMxkcCwbE415NEV4jhDX/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none;">
+                                <span>Descargar</span>
+                                <span>↓</span>
+                            </a>
                         </div>
                     </div>
                     
                     <div class="resource-item">
                         <div class="resource-icon">🔖</div>
-                        <div class="resource-title">Lecturas Complementarias</div>
+                        <div class="resource-title">Prompt para potenciar tu Expertise</div>
                         <div class="resource-download">
-                            <span>Descargar</span>
-                            <span>↓</span>
+                            <a href="https://docs.google.com/document/d/1525njxNBYx0SKZ05dpaqIM3CBAmS3uZRgse9Kp7dRqE/edit?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none;">
+                                <span>Descargar</span>
+                                <span>↓</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <div class="resource-icon">🧠</div>
+                        <div class="resource-title">Cómo obtienen información los modelos de lenguaje</div>
+                        <div class="resource-download">
+                            <a href="https://docs.google.com/document/d/1whKDZGyxRiZpACzJAAYMiXrhzm3OE69iIByctRSeQwI/edit?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none;">
+                                <span>Descargar</span>
+                                <span>↓</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <div class="resource-icon">⚙️</div>
+                        <div class="resource-title">Capacidades de los modelos de lenguaje</div>
+                        <div class="resource-download">
+                            <a href="https://docs.google.com/spreadsheets/d/1Qwzsga_YylQqdHuSssgGIMGX1CWNYDzOkxZqkPacbt4/edit?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none;">
+                                <span>Descargar</span>
+                                <span>↓</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <div class="resource-icon">💡</div>
+                        <div class="resource-title">Prompt para generar ideas prácticas para tu gestión</div>
+                        <div class="resource-download">
+                            <a href="https://docs.google.com/document/d/1FYqzKKjXIaZbMfFc4Qyxl6LKIIy2qRy2Jh2_gbHaObA/edit?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none;">
+                                <span>Descargar</span>
+                                <span>↓</span>
+                            </a>
                         </div>
                     </div>
                 </div>
