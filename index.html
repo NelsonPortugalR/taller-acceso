@@ -432,13 +432,20 @@
                         </div>
                     </div>
                     <div id="prompt-content" style="display: none; margin-left: 2.5rem; padding: 1rem; background-color: #f1f5f9; border-radius: 6px;">
-                        <h4 style="margin-bottom: 1rem;">Prompt para el profesional:</h4>
-                        <p style="margin-bottom: 1rem; white-space: pre-line; font-family: monospace; background-color: #f8fafc; padding: 1rem; border-radius: 4px; border-left: 3px solid var(--primary);">"Soy **[escribe aquí tu profesión]** y mis actividades técnicas incluyen **[tu tarea técnica específica, mientras más detallada mejor]**. 
+                        <p style="margin-bottom: 1rem;"><strong>Instrucción:</strong> Copia este prompt y pégalo en el modelo de lenguaje de tu elección (ChatGPT, Claude, Gemini, etc.). Personalízalo con tu profesión y tareas específicas para obtener sugerencias adaptadas a tu trabajo.</p>
+                        
+                        <div style="position: relative; margin-bottom: 1rem;">
+                            <h4 style="margin-bottom: 1rem;">Prompt para el profesional:</h4>
+                            <div style="position: relative;">
+                                <pre id="copy-text" style="white-space: pre-line; font-family: monospace; background-color: #f8fafc; padding: 1rem; border-radius: 4px; border-left: 3px solid var(--primary); margin: 0;">Soy [escribe aquí tu profesión] y mis actividades técnicas incluyen [tu tarea técnica específica, mientras más detallada mejor]. 
                     Quiero utilizar ChatGPT para mejorar mi eficiencia y desempeño en estas áreas. Por favor, sugiéreme tres maneras específicas en las que puedo aprovechar ChatGPT para lograrlo. Para cada idea, proporciona:
-                    * Un **prompt específico** que pueda usar, indicando entre corchetes los datos que debo ingresar.
-                    * Una **descripción detallada** de cómo utilizar esa recomendación en mi trabajo diario.
-                    * El **tipo de resultado** que me proporcionará ChatGPT.
-                    Cómo puedo **aplicar ese resultado** para mejorar mis tareas técnicas."</p>
+                    * Un prompt específico que pueda usar, indicando entre corchetes los datos que debo ingresar.
+                    * Una descripción detallada de cómo utilizar esa recomendación en mi trabajo diario.
+                    * El tipo de resultado que me proporcionará ChatGPT.
+                    * Cómo puedo aplicar ese resultado para mejorar mis tareas técnicas.</pre>
+                                <button onclick="copyPrompt()" id="copy-button" style="position: absolute; top: 10px; right: 10px; background-color: var(--primary); color: white; border: none; border-radius: 4px; padding: 5px 10px; cursor: pointer; font-size: 0.8rem;">Copiar</button>
+                            </div>
+                        </div>
                         
                         <h4 style="margin-top: 1.5rem; margin-bottom: 1rem;">Ejemplos de referencia:</h4>
                         
@@ -587,6 +594,26 @@
                 promptToggle.textContent = 'Ver Prompt';
             }
         }
+        // Función para copiar el prompt al portapapeles
+        function copyPrompt() {
+            const promptText = document.getElementById('copy-text').innerText;
+            navigator.clipboard.writeText(promptText).then(function() {
+                // Cambiar el texto del botón temporalmente para dar feedback
+                const copyButton = document.getElementById('copy-button');
+                copyButton.textContent = '¡Copiado!';
+                copyButton.style.backgroundColor = 'var(--success)';
+                
+                // Volver al estado original después de 2 segundos
+                setTimeout(function() {
+                    copyButton.textContent = 'Copiar';
+                    copyButton.style.backgroundColor = 'var(--primary)';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Error al copiar texto: ', err);
+                alert('No se pudo copiar el texto. Por favor, selecciona el texto y cópialo manualmente.');
+            });
+        }
+                
         // Inicializar la transcripción
         document.addEventListener('DOMContentLoaded', function() {
             const transcriptionToggle = document.getElementById('transcription-toggle');
