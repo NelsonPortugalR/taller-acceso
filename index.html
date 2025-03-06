@@ -500,7 +500,7 @@
                             <span>▼</span>
                         </div>
                     </div>
-                    <div id="prompt-generator-content" style="display: none; margin-left: 2.5rem; padding: 1rem; background-color: #f1f5f9; border-radius: 6px;">
+                    <div id="prompt-generator-content" style="display: none; margin-left: 2.5rem; margin-top: 1.5rem; padding: 1rem; background-color: #f1f5f9; border-radius: 6px;">
                         <div style="max-width: 800px;">
                             <h4 style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--dark);">Generador de Prompts para IA</h4>
                             
@@ -822,11 +822,11 @@
                 example: "Necesito crear una gráfica comparativa basada en los siguientes datos de ventas trimestrales de los últimos 3 años para nuestros 5 productos principales. El objetivo es mostrar claramente las tendencias de ventas y identificar patrones estacionales. ¿Puedes sugerir el mejor tipo de gráfica para representar esta información y explicar por qué? Además, proporciona una descripción detallada de cómo debería estructurarse la gráfica, incluyendo títulos, etiquetas de ejes, leyendas, y cualquier otro elemento relevante."
             },
             {
-                id: 17,
-                name: "VER IMÁGENES",
-                question: "¿Has recibido recientemente algún error visual o captura de pantalla que no entiendes completamente?",
-                answerExample: "Captura de pantalla de un mensaje de error en mi aplicación de correo electrónico",
-                example: "Analiza esta captura de pantalla de un mensaje de error en mi aplicación de correo electrónico. Describe detalladamente lo que ves, incluyendo el texto del error, cualquier código visible y el contexto de la aplicación. ¿Qué crees que podría estar causando este error y qué pasos sugieres para resolverlo?"
+            id: 17,
+            name: "VISUALIZAR CONCEPTOS",
+            question: "¿Qué concepto te gustaría explicar de mejor manera?",
+            answerExample: "La idea de que mientras más veces hagamos algo, mejores resultados tendremos",
+            example: "Crea una visualización atractiva, que sea fácil de entender y explicar sobre la idea de que mientras más veces hagamos algo, mejores resultados tendremos. Asegúrate de conceptualizar gráficamente la idea principal."
             },
             {
                 id: 18,
@@ -957,8 +957,8 @@
                 case 16: // HACER GRÁFICAS / COMPARATIVOS
                     finalPrompt = `Necesito crear una gráfica basada en los siguientes datos: ${input}. ¿Puedes sugerir el mejor tipo de gráfica para representar esta información y explicar por qué? Además, proporciona una descripción detallada de cómo debería estructurarse la gráfica, incluyendo títulos, etiquetas de ejes, leyendas, y cualquier otro elemento relevante.`;
                     break;
-                case 17: // VER IMÁGENES
-                    finalPrompt = `Analiza esta imagen de ${input}. Describe detalladamente lo que ves. ¿Qué crees que podría estar causando el problema y qué pasos sugieres para resolverlo?`;
+                case 17: // VISUALIZAR CONCEPTOS
+                    finalPrompt = `Crea una visualización atractiva, que sea fácil de entender y explicar sobre ${input}. Asegúrate de conceptualizar gráficamente la idea principal`;
                     break;
                 case 18: // INVESTIGAR
                     finalPrompt = `Siempre he querido saber más sobre ${input}. Por favor, realiza una investigación completa y proporciona un informe detallado que incluya: antecedentes históricos, conceptos clave, desarrollos recientes, aplicaciones prácticas, y perspectivas futuras. Asegúrate de incluir datos interesantes y curiosidades que puedan no ser ampliamente conocidas. También, sugiere recursos adicionales para seguir aprendiendo sobre este tema.`;
@@ -981,16 +981,18 @@
         }
 
         function copyToClipboard() {
-            const textarea = document.createElement('textarea');
-            textarea.value = generatedPromptElement.textContent;
-            document.body.appendChild(textarea);
-            
-            textarea.select();
-            document.execCommand('copy');
-            
-            document.body.removeChild(textarea);
-            
-            alert('Prompt copiado al portapapeles!');
+            navigator.clipboard.writeText(generatedPromptElement.textContent).then(function() {
+                copyButton.textContent = '¡Copiado!';
+                copyButton.style.backgroundColor = 'var(--success)';
+                
+                setTimeout(function() {
+                    copyButton.textContent = 'Copiar';
+                    copyButton.style.backgroundColor = 'var(--gray)';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Error al copiar texto: ', err);
+                alert('No se pudo copiar el texto. Por favor, selecciona el texto y cópialo manualmente.');
+            });
         }
     </script>
 </body>
