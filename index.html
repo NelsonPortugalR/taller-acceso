@@ -94,7 +94,7 @@
         
         .hero h1 {
             font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
         
         .hero p {
@@ -431,17 +431,10 @@
 <body>
     <header>
         <div class="container header-content">
-            <div class="logo">
+            <div class="logo" style="margin: 0 auto;">
                 <span class="logo-icon">🧠</span>
                 <span>Taller de IA Aplicada</span>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#modules">Módulos</a></li>
-                    <li><a href="#modules">Recursos</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
     
@@ -449,27 +442,148 @@
         <div class="container">
             <h1>Taller de Inteligencia Artificial Aplicada</h1>
             <p>Bienvenido a la plataforma oficial donde encontrarás todos los materiales y grabaciones del taller. Avanza a tu ritmo y aprovecha los recursos disponibles.</p>
+            <a href="#modules" class="btn btn-primary">Ver Módulos</a>
         </div>
     </div>
     
     <main class="container">
         <section id="modules">
             <h2 class="section-title">Módulos del Taller</h2>
-            <div class="module-grid">
-                <div class="module-card">
-                    <div class="module-img">
-                        🤖
+            
+            <!-- Módulo 1 contenido directo -->
+            <div style="background-color: white; border-radius: 10px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
+                <h3 style="margin-bottom: 1rem; font-size: 1.5rem; color: var(--dark);">Módulo 1: Modelos de lenguaje</h3>
+                <p style="margin-bottom: 1.5rem;">Conoce y domina todas las capacidades que los modelos de lenguaje te ofrecen.</p>
+                
+                <div class="video-container">
+                    <iframe id="vimeo-player" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://player.vimeo.com/video/1063132876" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                
+                <button id="transcription-toggle" class="btn btn-outline" style="margin-top: 1.5rem;">Ver Transcripción</button>
+                
+                <div id="transcription-content" style="display: none; margin-top: 1.5rem; padding: 1.5rem; background-color: #f8fafc; border-radius: 8px; border-left: 4px solid var(--primary);">
+                    <h4>Transcripción del Módulo 1: Modelos de lenguaje</h4>
+                    <ul style="list-style-type: none; padding: 0;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                            <strong>00:00:00 - 00:15:00</strong> - Bienvenida, presentación inicial de participantes y expectativas personales respecto al uso práctico de la IA en sus trabajos.
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                            <strong>00:15:01 - 00:30:00</strong> - Introducción al concepto de Inteligencia Artificial Aplicada, resaltando cómo combinar conocimientos especializados con herramientas tecnológicas existentes.
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                            <strong>00:30:01 - 00:45:00</strong> - Presentación de los modelos de lenguaje (LLM), qué son, cómo funcionan y ejemplos prácticos de uso en el ámbito laboral.
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                            <strong>00:45:01 - 01:00:00</strong> - Explicación sobre la importancia de la mentalidad para el aprendizaje de nuevas tecnologías, destacando la gestión de errores y frustraciones durante el proceso.
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                            <strong>01:00:01 - 01:15:00</strong> - Práctica guiada para la creación de cuentas y uso inicial de modelos de lenguaje específicos como ChatGPT, Claude y Grok.
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                            <strong>01:15:01 - 01:30:00</strong> - Ejemplos específicos sobre cómo se entrenan los modelos de lenguaje, significado de parámetros y cómo esto influye en su funcionamiento.
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                            <strong>01:30:01 - 01:45:00</strong> - Interacción práctica con los modelos para generar ejemplos personalizados sobre aplicaciones concretas de la IA en actividades laborales específicas.
+                        </li>
+                        <li style="padding: 8px 0;">
+                            <strong>01:45:01 - 02:00:00</strong> - Ejercicio final con sugerencias específicas dadas por los modelos sobre cómo aprovechar mejor la IA; reflexiones y cierre de la sesión con recomendaciones finales.
+                        </li>
+                    </ul>
+                </div>
+                
+                <h3 style="margin-top: 2rem;">Recursos Adicionales</h3>
+                <div class="resources">
+                    <div class="resource-item" id="modelos-lenguaje-item">
+                        <div class="resource-icon">📝</div>
+                        <div class="resource-title">Lista de Modelos de Lenguaje</div>
+                        <div class="resource-download" onclick="toggleModelList()">
+                            <span id="model-list-toggle">Ver Lista</span>
+                            <span>▼</span>
+                        </div>
                     </div>
-                    <div class="module-content">
-                        <span class="module-status status-available">Disponible</span>
-                        <h3>Módulo 1: Modelos de lenguaje</h3>
-                        <p>Conoce y domina todas las capacidades que los modelos de lenguaje te ofrecen.</p>
-                        <div class="module-actions">
-                            <a href="#" class="btn btn-primary" onclick="openModal('module1')">Ver Contenido</a>
+                    <div id="modelos-list" style="display: none; margin-left: 2.5rem; padding: 1rem; background-color: #f1f5f9; border-radius: 6px;">
+                        <ul style="list-style-type: none; padding: 0;">
+                            <li style="margin-bottom: 0.5rem;"><a href="https://claude.ai/" target="_blank" style="color: var(--primary); text-decoration: none;">Claude</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="https://grok.com/" target="_blank" style="color: var(--primary); text-decoration: none;">Grok</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="https://chatgpt.com" target="_blank" style="color: var(--primary); text-decoration: none;">ChatGPT</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="https://chat.deepseek.com/" target="_blank" style="color: var(--primary); text-decoration: none;">Deepseek</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="https://chat.mistral.ai/chat" target="_blank" style="color: var(--primary); text-decoration: none;">Mistral</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="https://gemini.google.com/app" target="_blank" style="color: var(--primary); text-decoration: none;">Gemini</a></li>
+                            <li><a href="https://meta.ai/" target="_blank" style="color: var(--primary); text-decoration: none;">Meta</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <div class="resource-icon">📊</div>
+                        <div class="resource-title">Fundamentos de la IA</div>
+                        <div class="resource-download">
+                            <a href="https://drive.google.com/file/d/1MS506BvnPnJVdy76cPbYm9G6ZYRNkG46/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none;">
+                                <span>Descargar</span>
+                                <span>↓</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <div class="resource-icon">📄</div>
+                        <div class="resource-title">Guía de Mentalidad</div>
+                        <div class="resource-download">
+                            <a href="https://drive.google.com/file/d/130-Hebuf6R2rRMxkcCwbE415NEV4jhDX/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none;">
+                                <span>Descargar</span>
+                                <span>↓</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <div class="resource-icon">🔖</div>
+                        <div class="resource-title">Prompt para potenciar tu Expertise</div>
+                        <div class="resource-download">
+                            <a href="https://docs.google.com/document/d/1525njxNBYx0SKZ05dpaqIM3CBAmS3uZRgse9Kp7dRqE/edit?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none;">
+                                <span>Descargar</span>
+                                <span>↓</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <div class="resource-icon">🧠</div>
+                        <div class="resource-title">Cómo obtienen información los modelos de lenguaje</div>
+                        <div class="resource-download">
+                            <a href="https://docs.google.com/document/d/1whKDZGyxRiZpACzJAAYMiXrhzm3OE69iIByctRSeQwI/edit?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none;">
+                                <span>Descargar</span>
+                                <span>↓</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <div class="resource-icon">⚙️</div>
+                        <div class="resource-title">Capacidades de los modelos de lenguaje</div>
+                        <div class="resource-download">
+                            <a href="https://docs.google.com/spreadsheets/d/1Qwzsga_YylQqdHuSssgGIMGX1CWNYDzOkxZqkPacbt4/edit?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none;">
+                                <span>Descargar</span>
+                                <span>↓</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-item">
+                        <div class="resource-icon">💡</div>
+                        <div class="resource-title">Prompt para generar ideas prácticas para tu gestión</div>
+                        <div class="resource-download">
+                            <a href="https://docs.google.com/document/d/1FYqzKKjXIaZbMfFc4Qyxl6LKIIy2qRy2Jh2_gbHaObA/edit?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none;">
+                                <span>Descargar</span>
+                                <span>↓</span>
+                            </a>
                         </div>
                     </div>
                 </div>
-                
+            </div>
+            
+            <!-- Otros módulos -->
+            <h3 style="margin-top: 3rem; margin-bottom: 1.5rem;">Próximos Módulos</h3>
+            <div class="module-grid">
                 <div class="module-card">
                     <div class="module-img">
                         💻
@@ -517,42 +631,40 @@
 
     </main>
     
-    <!-- Modals -->
-    <div id="module1Modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('module1')">&times;</span>
-            <div class="modal-header">
-                <h2>Módulo 1: Modelos de lenguaje</h2>
-            </div>
-            <div class="modal-body">
-                <div class="video-container">
-                    <iframe id="vimeo-player" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                
-                <button id="transcription-toggle" class="btn btn-outline">Ver Resumen</button>
-                
-                <div id="transcription-content" style="display: none; margin-top: 1.5rem; padding: 1.5rem; background-color: #f8fafc; border-radius: 8px; border-left: 4px solid var(--primary);">
-                    <h4>Resumen del Módulo 1: Modelos de lenguaje</h4>
-                    <ul style="list-style-type: none; padding: 0;">
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                            <strong>00:00:00 - 00:15:00</strong> - Bienvenida, presentación inicial de participantes y expectativas personales respecto al uso práctico de la IA en sus trabajos.
-                        </li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                            <strong>00:15:01 - 00:30:00</strong> - Introducción al concepto de Inteligencia Artificial Aplicada, resaltando cómo combinar conocimientos especializados con herramientas tecnológicas existentes.
-                        </li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                            <strong>00:30:01 - 00:45:00</strong> - Presentación de los modelos de lenguaje (LLM), qué son, cómo funcionan y ejemplos prácticos de uso en el ámbito laboral.
-                        </li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                            <strong>00:45:01 - 01:00:00</strong> - Explicación sobre la importancia de la mentalidad para el aprendizaje de nuevas tecnologías, destacando la gestión de errores y frustraciones durante el proceso.
-                        </li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                            <strong>01:00:01 - 01:15:00</strong> - Práctica guiada para la creación de cuentas y uso inicial de modelos de lenguaje específicos como ChatGPT, Claude y Grok.
-                        </li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
-                            <strong>01:15:01 - 01:30:00</strong> - Ejemplos específicos sobre cómo se entrenan los modelos de lenguaje, significado de parámetros y cómo esto influye en su funcionamiento.
-                        </li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+    <!-- Quitamos los modals ya que el contenido ahora está directamente en la página -->
+    
+    <script>
+        // Función para mostrar/ocultar la lista de modelos
+        function toggleModelList() {
+            const modelList = document.getElementById('modelos-list');
+            const modelListToggle = document.getElementById('model-list-toggle');
+            
+            if (modelList.style.display === 'none') {
+                modelList.style.display = 'block';
+                modelListToggle.textContent = 'Ocultar Lista';
+            } else {
+                modelList.style.display = 'none';
+                modelListToggle.textContent = 'Ver Lista';
+            }
+        }
+        
+        // Cargar el video directamente al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar la transcripción
+            const transcriptionToggle = document.getElementById('transcription-toggle');
+            const transcriptionContent = document.getElementById('transcription-content');
+            
+            transcriptionToggle.addEventListener('click', function() {
+                if (transcriptionContent.style.display === 'none') {
+                    transcriptionContent.style.display = 'block';
+                    transcriptionToggle.textContent = 'Ocultar Transcripción';
+                } else {
+                    transcriptionContent.style.display = 'none';
+                    transcriptionToggle.textContent = 'Ver Transcripción';
+                }
+            });
+        });
+    </script>
                             <strong>01:30:01 - 01:45:00</strong> - Interacción práctica con los modelos para generar ejemplos personalizados sobre aplicaciones concretas de la IA en actividades laborales específicas.
                         </li>
                         <li style="padding: 8px 0;">
@@ -560,7 +672,6 @@
                         </li>
                     </ul>
                 </div>
-
                 
                 <h3 style="margin-top: 2rem;">Recursos Adicionales</h3>
                 <div class="resources">
@@ -656,26 +767,9 @@
     
     <footer>
         <div class="container footer-content">
-            <div class="footer-section">
+            <div class="footer-section" style="max-width: 800px; margin: 0 auto; text-align: center;">
                 <h4>Sobre el Taller</h4>
                 <p>El Taller de Inteligencia Artificial Aplicada está diseñado para proporcionar conocimientos prácticos y teóricos en el campo de la IA, permitiendo a los participantes desarrollar habilidades aplicables en entornos profesionales.</p>
-            </div>
-            
-            <div class="footer-section">
-                <h4>Enlaces Rápidos</h4>
-                <ul class="footer-links">
-                    <li><a href="#modules">Módulos</a></li>
-                    <li><a href="#resources">Recursos</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section" id="contact">
-                <h4>Contacto</h4>
-                <ul class="footer-links">
-                    <li>📧 info@talleriaplicada.com</li>
-                    <li>📱 +1 (234) 567-8901</li>
-                </ul>
             </div>
         </div>
         
@@ -692,7 +786,7 @@
             // Si es el módulo 1, carga el iframe de Vimeo (aquí puedes poner tu URL de Vimeo)
             if (modalId === 'module1') {
                 // Reemplaza esta URL con tu video de Vimeo
-                document.getElementById('vimeo-player').src = "https://player.vimeo.com/video/1063132876";
+                document.getElementById('vimeo-player').src = "https://player.vimeo.com/video/123456789?h=abcdef&autoplay=0";
             }
         }
         
@@ -737,6 +831,19 @@
                     transcriptionToggle.textContent = 'Ver Transcripción';
                 }
             });
+            
+        function toggleModelList() {
+            const modelList = document.getElementById('modelos-list');
+            const modelListToggle = document.getElementById('model-list-toggle');
+            
+            if (modelList.style.display === 'none') {
+                modelList.style.display = 'block';
+                modelListToggle.textContent = 'Ocultar Lista';
+            } else {
+                modelList.style.display = 'none';
+                modelListToggle.textContent = 'Ver Lista';
+            }
+        }
         });
     </script>
 </body>
