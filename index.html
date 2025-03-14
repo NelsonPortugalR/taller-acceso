@@ -657,30 +657,8 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Añade este código JavaScript al final del archivo (antes de cerrar la etiqueta </body>) -->
-            <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const modulo1Toggle = document.getElementById('modulo1-toggle');
-                const modulo1Content = document.getElementById('modulo1-content');
-                
-                modulo1Toggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    if (modulo1Content.style.display === 'none') {
-                        modulo1Content.style.display = 'block';
-                        modulo1Toggle.textContent = 'Ocultar Contenido';
-                    } else {
-                        modulo1Content.style.display = 'none';
-                        modulo1Toggle.textContent = 'Ver Contenido';
-                    }
-                });
-            });
-            </script>
-            
-            <!-- Otros módulos -->
-            <h3 style="margin-top: 3rem; margin-bottom: 1.5rem;">Próximos Módulos</h3>
-            <div class="module-grid">
-                    <div class="module-card" style="margin-bottom: 2rem;">
+
+                   <div class="module-card" style="margin-bottom: 2rem;">
                         <div class="module-img">
                             💻
                         </div>
@@ -825,7 +803,30 @@
                         });
                     });
                     </script>
+                            
+            <!-- Añade este código JavaScript al final del archivo (antes de cerrar la etiqueta </body>) -->
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const modulo1Toggle = document.getElementById('modulo1-toggle');
+                const modulo1Content = document.getElementById('modulo1-content');
                 
+                modulo1Toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (modulo1Content.style.display === 'none') {
+                        modulo1Content.style.display = 'block';
+                        modulo1Toggle.textContent = 'Ocultar Contenido';
+                    } else {
+                        modulo1Content.style.display = 'none';
+                        modulo1Toggle.textContent = 'Ver Contenido';
+                    }
+                });
+            });
+            </script>
+            
+            <!-- Otros módulos -->
+            <h3 style="margin-top: 3rem; margin-bottom: 1.5rem;">Próximos Módulos</h3>
+            <div class="module-grid">
+ 
                 <div class="module-card">
                     <div class="module-img">
                         🔍
