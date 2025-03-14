@@ -680,19 +680,151 @@
             <!-- Otros módulos -->
             <h3 style="margin-top: 3rem; margin-bottom: 1.5rem;">Próximos Módulos</h3>
             <div class="module-grid">
-                <div class="module-card">
-                    <div class="module-img">
-                        💻
-                    </div>
-                    <div class="module-content">
-                        <span class="module-status status-upcoming">Próximamente</span>
-                        <h3>Módulo 2: Ingeniería de prompts</h3>
-                        <p>Diseña prompts que optimicen tus flujos de trabajo diarios mediante una efectiva simbiosis humano-IA.</p>
-                        <div class="module-actions">
-                            <a href="#" class="btn btn-outline" disabled>Contenido Bloqueado</a>
+                    <div class="module-card" style="margin-bottom: 2rem;">
+                        <div class="module-img">
+                            💻
+                        </div>
+                        <div class="module-content">
+                            <span class="module-status status-available">Disponible</span>
+                            <h3>Módulo 2: Ingeniería de prompts</h3>
+                            <p>Diseña prompts que optimicen tus flujos de trabajo diarios mediante una efectiva simbiosis humano-IA.</p>
+                            <div class="module-actions">
+                                <a href="#" class="btn btn-primary" id="modulo2-toggle">Ver Contenido</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    
+                    <!-- Este div contiene todo el contenido del módulo 2 -->
+                    <div id="modulo2-content" style="display: none; background-color: white; border-radius: 10px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
+                        <h3 style="margin-bottom: 1rem; font-size: 1.5rem; color: var(--dark);">Módulo 2: Ingeniería de prompts</h3>
+                        <p style="margin-bottom: 1.5rem;">Diseña prompts que optimicen tus flujos de trabajo diarios mediante una efectiva simbiosis humano-IA.</p>
+                        
+                        <div class="video-container">
+                            <iframe id="vimeo-player" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://vimeo.com/1065326937?share=copy" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        
+                        <button id="transcription-toggle-2" class="btn btn-outline" style="margin-top: 1.5rem;">Ver Resumen</button>
+                        
+                        <div id="transcription-content-2" style="display: none; margin-top: 1.5rem; padding: 1.5rem; background-color: #f8fafc; border-radius: 8px; border-left: 4px solid var(--primary);">
+                            <h4>Transcripción del Módulo 2: Ingeniería de prompts</h4>
+                            <ul style="list-style-type: none; padding: 0;">
+                                <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>00:00:00 - 00:15:00</strong> - Bienvenida e introducción a la sesión, enfocada en ingeniería de prompts y el impacto de la IA en la productividad profesional.
+                                </li>
+                                <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>00:15:01 - 00:30:00</strong> - Explicación sobre cómo estructurar solicitudes efectivas a modelos de IA, incluyendo detalles, contexto y ejemplos para obtener respuestas útiles.
+                                </li>
+                                <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>00:30:01 - 00:45:00</strong> - Presentación de las capacidades y limitaciones de los modelos de lenguaje, destacando su utilidad en tareas de texto (análisis, correos, presentaciones) y sus debilidades en diseño visual o automatización.
+                                </li>
+                                <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>00:45:01 - 01:00:00</strong> - Demostración práctica de ChatGPT para crear presentaciones y generar contenido, con ejemplos como resúmenes históricos o preguntas de examen.
+                                </li>
+                                <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>01:00:01 - 01:15:00</strong> - Discusión sobre diferencias entre versiones gratuitas y pagadas de modelos (ChatGPT, Grok, Claude), confidencialidad y recursos para participantes.
+                                </li>
+                                <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>01:15:01 - 01:30:00</strong> - Explicación de tres niveles de uso de IA en generación de contenido: consultas generales, uso de contexto y prompts predefinidos para tareas repetitivas.
+                                </li>
+                                <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>01:30:01 - 01:45:00</strong> - Ejercicio práctico en grupos para crear prompts personalizados, como analizar tardanzas laborales y generar gráficos reutilizables.
+                                </li>
+                                <li style="padding: 8px 0;">
+                                    <strong>01:45:01 - 02:00:00</strong> - Revisión de trabajos grupales, discusión sobre sesgos en IA y estrategias de mitigación (iteración, verificación cruzada), cierre con reflexiones y siguientes pasos.
+.
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <h3 style="margin-top: 2rem;">Recursos Adicionales</h3>
+                        <div class="resources">
+                            <div class="resource-item">
+                                <div class="resource-icon">📝</div>
+                                <div class="resource-title">Anatomía de un prompt</div>
+                                <div class="resource-download">
+                                    <a href="https://docs.google.com/document/d/1XX9dW_YM8s9HH2t13UwXb6bhSNCkI-TBw52KeNhDNGY/edit?tab=t.0" target="_blank" style="color: var(--primary); text-decoration: none;">
+                                        <span>Descargar guía</span>
+                                        <span>↓</span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <div class="resource-icon">🔖</div>
+                                <div class="resource-title">Ecosistema del Prompting</div>
+                                <div class="resource-download">
+                                    <a href="https://docs.google.com/document/d/1AQQ8NO-BcjOf-gxv5hJ1dgThODP27jBC450eHZr_i-s/edit?tab=t.0#heading=h.h3q6l2qnioyw" target="_blank" style="color: var(--primary); text-decoration: none;">
+                                        <span>Descargar guía</span>
+                                        <span>↓</span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <div class="resource-icon">📄</div>
+                                <div class="resource-title">Caso de Estudio Tardanzas</div>
+                                <div class="resource-download">
+                                    <a href="https://docs.google.com/document/d/1qQD14HFTF4xfRdb-qE9a0yyECumMIkvCCEE8N2kwnqA/edit?tab=t.0" target="_blank" style="color: var(--primary); text-decoration: none;">
+                                        <span>Descargar caso</span>
+                                        <span>↓</span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <div class="resource-icon">⚙️</div>
+                                <div class="resource-title">Sesgos de los LLM</div>
+                                <div class="resource-download">
+                                    <a href="https://docs.google.com/document/d/1TbH3y77aM4Vljcv8ibTWASc_CoTAI_RV7spUz6YJZxk/edit?tab=t.0#heading=h.40yh1hixzbwx" target="_blank" style="color: var(--primary); text-decoration: none;">
+                                        <span>Descargar guía</span>
+                                        <span>↓</span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="resource-item">
+                                <div class="resource-icon">💡</div>
+                                <div class="resource-title">Tácticas de Prompting</div>
+                                <div class="resource-download">
+                                    <a href="https://docs.google.com/document/d/1T8UFt6Ckgl_Nz4pj4hn2oy7-n_1qchEXzfsnouAURm0/edit?tab=t.0" target="_blank" style="color: var(--primary); text-decoration: none;">
+                                        <span>Descargar guía</span>
+                                        <span>↓</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const modulo2Toggle = document.getElementById('modulo2-toggle');
+                        const modulo2Content = document.getElementById('modulo2-content');
+                        
+                        modulo2Toggle.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            if (modulo2Content.style.display === 'none') {
+                                modulo2Content.style.display = 'block';
+                                modulo2Toggle.textContent = 'Ocultar Contenido';
+                            } else {
+                                modulo2Content.style.display = 'none';
+                                modulo2Toggle.textContent = 'Ver Contenido';
+                            }
+                        });
+                        
+                        const transcriptionToggle2 = document.getElementById('transcription-toggle-2');
+                        const transcriptionContent2 = document.getElementById('transcription-content-2');
+                        
+                        transcriptionToggle2.addEventListener('click', function() {
+                            if (transcriptionContent2.style.display === 'none') {
+                                transcriptionContent2.style.display = 'block';
+                                transcriptionToggle2.textContent = 'Ocultar Resumen';
+                            } else {
+                                transcriptionContent2.style.display = 'none';
+                                transcriptionToggle2.textContent = 'Ver Resumen';
+                            }
+                        });
+                    });
+                    </script>
                 
                 <div class="module-card">
                     <div class="module-img">
