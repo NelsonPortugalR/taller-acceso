@@ -589,8 +589,72 @@
                             <span>▼</span>
                         </div>
                     </div>
+            
                     <div id="prompt-generator-content" style="display: none; margin-left: 2.5rem; margin-top: 1.5rem; padding: 1rem; background-color: #f1f5f9; border-radius: 6px;">
-                        <!-- Contenido del generador de prompts -->
+                        <div style="max-width: 800px;">
+                            <h4 style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--dark);">Generador de Prompts para IA</h4>
+                            
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; color: var(--dark); font-weight: 600; margin-bottom: 0.5rem;">
+                                    Selecciona una capacidad:
+                                </label>
+                                <select 
+                                    id="capability-select"
+                                    style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 6px; background-color: white; color: var(--dark);"
+                                >
+                                    <option value="">-- Selecciona una capacidad --</option>
+                                    <!-- Las opciones se cargarán con JavaScript -->
+                                </select>
+                            </div>
+                    
+                            <div id="question-container" style="margin-bottom: 1.5rem; display: none;">
+                                <label id="question-label" style="display: block; color: var(--dark); font-weight: 600; margin-bottom: 0.5rem;">
+                                    <!-- Pregunta aquí -->
+                                </label>
+                                <div id="answer-example" style="margin-bottom: 0.5rem; color: var(--gray); font-style: italic; font-size: 0.875rem;">
+                                    <!-- Ejemplo de respuesta aquí -->
+                                </div>
+                                <textarea
+                                    id="custom-input"
+                                    style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 6px; background-color: white; resize: vertical; min-height: 100px;"
+                                    placeholder="Ingresa tu respuesta aquí..."
+                                ></textarea>
+                            </div>
+                    
+                            <div id="generate-button-container" style="margin-bottom: 1rem; display: none;">
+                                <button
+                                    id="generate-button"
+                                    class="btn btn-primary"
+                                    style="width: 100%;"
+                                >
+                                    Generar Prompt
+                                </button>
+                            </div>
+                    
+                            <div id="result-container" style="display: none;">
+                                <div style="padding: 1rem; border: 1px solid #e2e8f0; border-radius: 6px; background-color: var(--light);">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                        <h5 style="font-size: 1rem; font-weight: 600; color: var(--dark);">Prompt Generado:</h5>
+                                        <button
+                                            id="copy-button"
+                                            style="background-color: var(--gray); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.875rem; cursor: pointer;"
+                                        >
+                                            Copiar
+                                        </button>
+                                    </div>
+                                    <div id="generated-prompt" style="padding: 0.75rem; background-color: white; border: 1px solid #e2e8f0; border-radius: 4px; white-space: pre-wrap; font-family: monospace;">
+                                        <!-- Prompt generado aquí -->
+                                    </div>
+                                </div>
+                                
+                                <div style="margin-top: 1rem; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 6px; background-color: var(--light);">
+                                    <h5 style="font-size: 1rem; font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">Ejemplo de prompt:</h5>
+                                    <div id="example-prompt" style="padding: 0.75rem; background-color: white; border: 1px solid #e2e8f0; border-radius: 4px; white-space: pre-wrap; font-family: monospace;">
+                                        <!-- Ejemplo aquí -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
