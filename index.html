@@ -1143,6 +1143,19 @@
         </div>
     </div>
 </div>
+        <div id="promo-container" class="promo-container" style="position: fixed; bottom: 20px; right: 20px; width: 300px; z-index: 1000; transition: all 0.3s ease;">
+            <div class="promo-box" style="background: linear-gradient(to right, var(--primary), var(--secondary)); border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); padding: 20px; color: white;">
+                <div class="promo-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <h4 style="margin: 0; font-size: 16px; font-weight: 600;">¡Da el siguiente paso!</h4>
+                    <button id="minimize-promo" style="background: none; border: none; color: white; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; width: 24px; height: 24px;">−</button>
+                </div>
+                <div id="promo-content">
+                    <p style="font-size: 14px; margin-bottom: 15px;">No te detengas ahora, domina la automatización laboral y asegura tu futuro profesional.</p>
+                    <a href="https://nelsonportugalr.github.io/" target="_blank" class="btn" style="background-color: white; color: var(--primary); font-weight: 600; padding: 10px 15px; border-radius: 6px; text-decoration: none; display: block; text-align: center; transition: all 0.2s ease;">Conoce más</a>
+                </div>
+            </div>
+        </div>
+            
         </section>
     </main>
     
@@ -1622,6 +1635,30 @@
                 codeToolsToggle.textContent = 'Ver lista';
             }
         }
+    </script>
+    <!-- Script para el botón flotante -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const minimizeButton = document.getElementById('minimize-promo');
+            const promoContent = document.getElementById('promo-content');
+            const promoContainer = document.getElementById('promo-container');
+            let isMinimized = false;
+            
+            minimizeButton.addEventListener('click', function() {
+                if (isMinimized) {
+                    // Expandir
+                    promoContent.style.display = 'block';
+                    minimizeButton.textContent = '−';
+                    promoContainer.style.width = '300px';
+                } else {
+                    // Minimizar
+                    promoContent.style.display = 'none';
+                    minimizeButton.textContent = '+';
+                    promoContainer.style.width = '50px';
+                }
+                isMinimized = !isMinimized;
+            });
+        });
     </script>
 </body>
 </html>
