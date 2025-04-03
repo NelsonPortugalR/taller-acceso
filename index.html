@@ -1048,20 +1048,101 @@
             
             
                 
-                <div class="module-card">
-                    <div class="module-img">
-                        🚀
-                    </div>
-                    <div class="module-content">
-                        <span class="module-status status-upcoming">Próximamente</span>
-                        <h3>Módulo 4: Integración de aplicativos</h3>
-                        <p>Aprende a automatizar procesos de manera eficiente y libera tiempo para lo estratégico.</p>
-                        <div class="module-actions">
-                            <a href="#" class="btn btn-outline" disabled>Contenido Bloqueado</a>
-                        </div>
-                    </div>
-                </div>
+<div class="module-card" style="margin-bottom: 2rem;">
+    <div class="module-img">
+        🚀
+    </div>
+    <div class="module-content">
+        <span class="module-status status-available">Disponible</span>
+        <h3>Módulo 4: Integración de aplicativos</h3>
+        <p>Aprende a automatizar procesos de manera eficiente y libera tiempo para lo estratégico.</p>
+        <div class="module-actions">
+            <a href="#" class="btn btn-primary" id="modulo4-toggle">Ver Contenido</a>
+        </div>
+    </div>
+</div>
+
+<!-- Este div contiene todo el contenido del módulo 4 -->
+<div id="modulo4-content" style="display: none; background-color: white; border-radius: 10px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
+    <h3 style="margin-bottom: 1rem; font-size: 1.5rem; color: var(--dark);">Módulo 4: Integración de aplicativos</h3>
+    <p style="margin-bottom: 1.5rem;">Aprende a automatizar procesos de manera eficiente y libera tiempo para lo estratégico.</p>
+    
+    <div class="video-container">
+        <iframe id="vimeo-player" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://player.vimeo.com/video/1072140512" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    
+    <button id="transcription-toggle-4" class="btn btn-outline" style="margin-top: 1.5rem;">Ver Resumen</button>
+    
+    <div id="transcription-content-4" style="display: none; margin-top: 1.5rem; padding: 1.5rem; background-color: #f8fafc; border-radius: 8px; border-left: 4px solid var(--primary);">
+        <h4>Transcripción de la Sesión 4: Automatización e Integración de Aplicativos</h4>
+        <ul style="list-style-type: none; padding: 0;">
+            <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                <strong>00:00:00 - 00:15:00</strong> - Inicio con saludos entre el facilitador y los participantes (Fran, Lorenzo, Fernando, César). Pregunta cómo han estado y qué han explorado. Fran comparte su uso de IA para crear modelos 3D desde fotos para su emprendimiento de impresión 3D. Se elogia la iniciativa y se sugieren integraciones con Claude.
+            </li>
+            <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                <strong>00:15:01 - 00:30:00</strong> - Introducción al tema de automatización con integración de aplicativos y repaso de conceptos previos (modelos de lenguaje, prompts, herramientas no-code). César plantea recibir 50-100 correos diarios en Outlook y querer ordenarlos para no perder certificados por firmar.
+            </li>
+            <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                <strong>00:30:01 - 00:45:00</strong> - Explicación sobre elegir tareas repetitivas para automatizar, usando el caso de César (30 min diarios = 120 horas/año) reducible a 12 horas con 62 horas de configuración. Fran propone un flujo: "Si el stock baja los viernes, comprar al proveedor".
+            </li>
+            <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                <strong>00:45:01 - 01:00:00</strong> - Presentación de gatilladores (hora, lugar, eventos) y acciones, con ejemplos como "Si llega un correo, categorízalo", y preparación de una demostración en Zapier con un Google Sheets de candidatos (nombre, cargo, empresa, email, estado).
+            </li>
+            <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                <strong>01:00:01 - 01:15:00</strong> - Configuración en Zapier de un flujo: cambio en "estado" a "aceptado" dispara un correo personalizado, con filtro para "aceptado". Invitación a los participantes a replicarlo con un Google Sheets y Zapier.
+            </li>
+            <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                <strong>01:15:01 - 01:30:00</strong> - Guía para practicar en Zapier, pidiendo enviar el correo al facilitador, y compartiendo el truco "sheets.new". Respuesta a Fran sobre la ejecución (2 min) fija en la versión gratuita, ajustable en planes pagos.
+            </li>
+            <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                <strong>01:30:01 - 01:45:00</strong> - Muestra de ejemplos: notificar candidatos no aceptados desde Excel, subir facturas a Drive, y automatizar memorándums con formularios. Miguel pregunta por Outlook y Dynamics; se recomienda Power Automate para entornos Microsoft.
+            </li>
+            <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                <strong>01:45:01 - 02:00:00</strong> - Introducción a agentes de IA: automatizaciones con modelos de lenguaje que deciden sin mapear todo. Configuración de un agente en Zapier que busca a "Julio Gómez" en Google Sheets, revisa correos y envía un resumen, destacando su flexibilidad.
+            </li>
+            <li style="padding: 8px 0;">
+                <strong>02:00:01 - 02:15:00</strong> - Cierre con reflexiones: Miguel valora las herramientas para su entorno corporativo; César destaca el aprendizaje progresivo; Fran aprecia el cambio en la interacción con la tecnología. Se comparten grabaciones, sesiones individuales gratuitas y un bootcamp (17 de abril).
+            </li>
+        </ul>
+    </div>
+    
+    <h3 style="margin-top: 2rem;">Recursos Adicionales</h3>
+    <div class="resources">
+        <div class="resource-item">
+            <div class="resource-icon">🔄</div>
+            <div class="resource-title">Herramientas de integración de flujos de trabajo no-code</div>
+            <div class="resource-download" onclick="toggleNoCodeTools()">
+                <span id="no-code-tools-toggle">Ver lista</span>
+                <span>▼</span>
             </div>
+        </div>
+        <div id="no-code-tools-list" style="display: none; margin-left: 2.5rem; padding: 1rem; background-color: #f1f5f9; border-radius: 6px;">
+            <ul style="list-style-type: disc; padding-left: 1.5rem;">
+                <li style="margin-bottom: 0.5rem;"><a href="https://zapier.com" target="_blank" style="color: var(--primary); text-decoration: none;">Zapier</a></li>
+                <li style="margin-bottom: 0.5rem;"><a href="https://powerautomate.microsoft.com" target="_blank" style="color: var(--primary); text-decoration: none;">Power Automate</a></li>
+                <li style="margin-bottom: 0.5rem;"><a href="https://make.com" target="_blank" style="color: var(--primary); text-decoration: none;">Make</a></li>
+                <li><a href="https://lindy.ai" target="_blank" style="color: var(--primary); text-decoration: none;">Lindy</a></li>
+            </ul>
+        </div>
+        
+        <div class="resource-item">
+            <div class="resource-icon">💻</div>
+            <div class="resource-title">Herramientas de integración de flujos de trabajo con código</div>
+            <div class="resource-download" onclick="toggleCodeTools()">
+                <span id="code-tools-toggle">Ver lista</span>
+                <span>▼</span>
+            </div>
+        </div>
+        <div id="code-tools-list" style="display: none; margin-left: 2.5rem; padding: 1rem; background-color: #f1f5f9; border-radius: 6px;">
+            <ul style="list-style-type: disc; padding-left: 1.5rem;">
+                <li style="margin-bottom: 0.5rem;"><a href="https://developers.google.com/apps-script" target="_blank" style="color: var(--primary); text-decoration: none;">App Script</a></li>
+                <li style="margin-bottom: 0.5rem;"><a href="https://www.python.org" target="_blank" style="color: var(--primary); text-decoration: none;">Python</a></li>
+                <li style="margin-bottom: 0.5rem;"><a href="https://code.visualstudio.com" target="_blank" style="color: var(--primary); text-decoration: none;">Visual Studio Code</a></li>
+                <li><a href="https://cursor.sh" target="_blank" style="color: var(--primary); text-decoration: none;">Cursor</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
         </section>
     </main>
     
@@ -1480,6 +1561,66 @@
                 console.error('Error al copiar texto: ', err);
                 alert('No se pudo copiar el texto. Por favor, selecciona el texto y cópialo manualmente.');
             });
+        }
+        // Funcionalidad para el Módulo 4
+        document.addEventListener('DOMContentLoaded', function() {
+            const modulo4Toggle = document.getElementById('modulo4-toggle');
+            const modulo4Content = document.getElementById('modulo4-content');
+            
+            if (modulo4Toggle) {
+                modulo4Toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (modulo4Content.style.display === 'none') {
+                        modulo4Content.style.display = 'block';
+                        modulo4Toggle.textContent = 'Ocultar Contenido';
+                    } else {
+                        modulo4Content.style.display = 'none';
+                        modulo4Toggle.textContent = 'Ver Contenido';
+                    }
+                });
+            }
+            
+            const transcriptionToggle4 = document.getElementById('transcription-toggle-4');
+            const transcriptionContent4 = document.getElementById('transcription-content-4');
+            
+            if (transcriptionToggle4) {
+                transcriptionToggle4.addEventListener('click', function() {
+                    if (transcriptionContent4.style.display === 'none') {
+                        transcriptionContent4.style.display = 'block';
+                        transcriptionToggle4.textContent = 'Ocultar Resumen';
+                    } else {
+                        transcriptionContent4.style.display = 'none';
+                        transcriptionToggle4.textContent = 'Ver Resumen';
+                    }
+                });
+            }
+        });
+        
+        // Funciones para mostrar/ocultar recursos del Módulo 4
+        function toggleNoCodeTools() {
+            const noCodeToolsList = document.getElementById('no-code-tools-list');
+            const noCodeToolsToggle = document.getElementById('no-code-tools-toggle');
+            
+            if (noCodeToolsList.style.display === 'none') {
+                noCodeToolsList.style.display = 'block';
+                noCodeToolsToggle.textContent = 'Ocultar lista';
+            } else {
+                noCodeToolsList.style.display = 'none';
+                noCodeToolsToggle.textContent = 'Ver lista';
+            }
+        }
+        
+        function toggleCodeTools() {
+            const codeToolsList = document.getElementById('code-tools-list');
+            const codeToolsToggle = document.getElementById('code-tools-toggle');
+            
+            if (codeToolsList.style.display === 'none') {
+                codeToolsList.style.display = 'block';
+                codeToolsToggle.textContent = 'Ocultar lista';
+            } else {
+                codeToolsList.style.display = 'none';
+                codeToolsToggle.textContent = 'Ver lista';
+            }
         }
     </script>
 </body>
